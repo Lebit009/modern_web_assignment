@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Old School Anime</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+</div>
+<!-- Header -->
+  <header class="header">
+    <div class="container-fluid">
+
+          <!-- Navigation -->
+<nav class="navbar navbar-expand-lg static-top">
+  <div class="container-fluid">
+    <a class="navbar-brand animated flip" >
+          <img src="{% static 'img/img1.png' %}" alt="">
+        </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+      </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive" style="font-size:15px;">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a href="../home" class="nav-link">Home
+              </a>
+        </li>
+      <li class="nav-item dropdown">
+        <a href="#genre" class="nav-link" >
+          Genre
+        </a>
+    </li>
+        <li class="nav-item">
+          <a href="#popular" class="nav-link" >Popular</a>
+           </li>
+           <li class="nav-item">
+          <a href="#demo" class="nav-link" >Airing </a>
+           </li>
+        <li  class="nav-item">
+          <a href="#season" class="nav-link " >New Season</a>
+        </li>
+        <li class="nav-item">
+          <a href="../Request/" class="nav-link ">Request</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+    <div class="row">
+        <div class="intro-text">
+        <h1>Welcome To <span class="name">Anime World</span></h1>
+                <h2>Enjoy watching anime and give review on it.</h2>
+            <div class="active-pink-3 active-pink-4 mb-4" id="search">
+            <form  method="post" class="form-inline">
+           {% csrf_token %}
+          <input class="form-control mr-sm-2" type="text" name="key" placeholder="Search ">
+          <button class="btn bg-danger"  type="submit" name="btn" >Search</button>
+            </form>
+            </div>
+            {% if user.is_authenticated  %}
+            {{request.user}}
+                <button class="button"><a href="../logout/">Log Out</a></button>
+             {% else %}
+               <button class="button"><a href="../signin/">Sign Up</a></button>
+          <button  class="button"><a href="../login/">Log In</a></button>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</header>
+
+<br><div class="time text-white">
+	<h1>Set timer.</h1>
+	<button class="button" onclick="start()" id="start">Start</button>
+	<button class="button" onclick="time_stop()">Stop</button>
+	<button class="button" onclick="reset()">Reset</button>
+	<div id="time">0</div>
+</div>
+
+<br>
+<div class="container-fluid cont0 text-center text-uppercase" id="genre" >
+    <h3>Genre</h3><br>
+<table class="table table-striped">
+  <thead>
+    <tr  id="t1"><th>S/N</th><th>Anime Trending</th><th>Genre</th><th>Rating</th></tr>
+  </thead>
+  <tbody>
+  {% for animes in Anime %}
+    <tr><th>{{animes.id}}</th><td>{{animes.Anime_trending}}</td><td>{{animes.Genre}}</td><td>
+        <div class="stars" >
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+    </div></td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+    <div class="row1">
+        <form class="form-inline">
+{% csrf_token %}
+          <input class="form-control" type="text" name="key" placeholder="Search ">
+        <button class="btn bg-danger"  type="submit" name="btn" >Update</button>
+        <button class="btn bg-danger"  type="submit" name="btn" >Delete</button>
+        </form>
+    </div><br>
+</div>
+
+  <br><div class="section col-sm-12 text-center text-uppercase" id="popular">
+    <h3>Popular</h3><br>
+      <div class="container cont1">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-heading">Infinite Dendogram</div><br>
+        <div class="panel-body"><img src="{% static 'img/6.jpg' %}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+          <span class="heading">User Rating</span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+			<p>3.1 average based on 183 reviews.</p>
+			<hr style="border:3px solid white">
+
+			<div class="row">
+			  <div class="side"><div>5 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-5"></div></div></div>
+			  <div class="side right"><div>100</div></div>
+
+			  <div class="side"><div>4 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-4"></div></div></div>
+			  <div class="side right"><div>60</div></div>
+
+			  <div class="side"><div>3 star</div></div>
+			  <div class="middle"> <div class="bar-container">
+			  <div class="bar-3"></div></div></div>
+			  <div class="side right"><div>10</div></div>
+
+			  <div class="side"><div>2 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-2"></div></div></div>
+			  <div class="side right"><div>3</div></div>
+
+			  <div class="side"><div>1 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-1"></div></div></div>
+			  <div class="side right"><div>10</div></div>
+			</div>
+        </div><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-heading">Dorohedoro</div><br>
+        <div class="panel-body"><img src="{% static 'img/7.jpg' %}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+          <span class="heading">User Rating</span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+			<span class="fa fa-star"></span>
+			<p>3.9 average based on 128 reviews.</p>
+			<hr style="border:3px solid white">
+
+			<div class="row">
+			  <div class="side"><div>5 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-5"></div></div></div>
+			  <div class="side right"><div>90</div></div>
+
+			  <div class="side"><div>4 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-4"></div></div></div>
+			  <div class="side right"><div>13</div></div>
+
+			  <div class="side"><div>3 star</div></div>
+			  <div class="middle"> <div class="bar-container">
+			  <div class="bar-3"></div></div></div>
+			  <div class="side right"><div>9</div></div>
+
+			  <div class="side"><div>2 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-2"></div></div></div>
+			  <div class="side right"><div>8</div></div>
+
+			  <div class="side"><div>1 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-1"></div></div></div>
+			  <div class="side right"><div>8</div></div>
+			</div>
+        </div><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel">
+        <div class="panel-heading">Plunderer</div><br>
+        <div class="panel-body"><img src="{% static 'img/8.jpg' %}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+          <span class="heading">User Rating</span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+			<p>4.2 average based on 186 reviews.</p>
+			<hr style="border:3px solid white">
+
+			<div class="row">
+			  <div class="side"><div>5 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-5"></div></div></div>
+			  <div class="side right"><div>120</div></div>
+
+			  <div class="side"><div>4 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-4"></div></div></div>
+			  <div class="side right"><div>40</div></div>
+
+			  <div class="side"><div>3 star</div></div>
+			  <div class="middle"> <div class="bar-container">
+			  <div class="bar-3"></div></div></div>
+			  <div class="side right"><div>15</div></div>
+
+			  <div class="side"><div>2 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-2"></div></div></div>
+			  <div class="side right"><div>9</div></div>
+
+			  <div class="side"><div>1 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-1"></div></div></div>
+			  <div class="side right"><div>2</div></div>
+			</div>
+        </div><br>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container cont2">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Kuroko no basket</div><br>
+        <div class="panel-body"><img src="{% static 'img/10.jpg' %}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+          <span class="heading">User Rating</span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<p>4.8 average based on 290 reviews.</p>
+			<hr style="border:3px solid white">
+
+			<div class="row">
+			  <div class="side"><div>5 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-5"></div></div></div>
+			  <div class="side right"><div>200</div></div>
+
+			  <div class="side"><div>4 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-4"></div></div></div>
+			  <div class="side right"><div>60</div></div>
+
+			  <div class="side"><div>3 star</div></div>
+			  <div class="middle"> <div class="bar-container">
+			  <div class="bar-3"></div></div></div>
+			  <div class="side right"><div>20</div></div>
+
+			  <div class="side"><div>2 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-2"></div></div></div>
+			  <div class="side right"><div>10</div></div>
+
+			  <div class="side"><div>1 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-1"></div></div></div>
+			  <div class="side right"><div>24</div></div>
+			</div>
+
+        </div><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Black Clover</div><br>
+        <div class="panel-body"><img src="{% static 'img/9.jpg' %}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+          <span class="heading">User Rating</span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<p>4.9 average based on 251 reviews.</p>
+			<hr style="border:3px solid white">
+
+			<div class="row">
+			  <div class="side"><div>5 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-5"></div></div></div>
+			  <div class="side right"><div>170</div></div>
+
+			  <div class="side"><div>4 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-4"></div></div></div>
+			  <div class="side right"><div>53</div></div>
+
+			  <div class="side"><div>3 star</div></div>
+			  <div class="middle"> <div class="bar-container">
+			  <div class="bar-3"></div></div></div>
+			  <div class="side right"><div>25</div></div>
+
+			  <div class="side"><div>2 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-2"></div></div></div>
+			  <div class="side right"><div>5</div></div>
+
+			  <div class="side"><div>1 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-1"></div></div></div>
+			  <div class="side right"><div>15</div></div>
+			</div>
+        </div><br>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Dororo</div><br>
+        <div class="panel-body"><img src="{% static 'img/11.jpg' %}" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">
+			<span class="heading">User Rating</span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star checked"></span>
+			<span class="fa fa-star"></span>
+			<p>4.7 average based on 254 reviews.</p>
+			<hr style="border:3px solid white">
+
+			<div class="row">
+			  <div class="side"><div>5 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-5"></div></div></div>
+			  <div class="side right"><div>150</div></div>
+
+			  <div class="side"><div>4 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-4"></div></div></div>
+			  <div class="side right"><div>63</div></div>
+
+			  <div class="side"><div>3 star</div></div>
+			  <div class="middle"> <div class="bar-container">
+			  <div class="bar-3"></div></div></div>
+			  <div class="side right"><div>15</div></div>
+
+			  <div class="side"><div>2 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-2"></div></div></div>
+			  <div class="side right"><div>6</div></div>
+
+			  <div class="side"><div>1 star</div></div>
+			  <div class="middle"><div class="bar-container">
+			  <div class="bar-1"></div></div></div>
+			  <div class="side right"><div>20</div></div>
+			</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+</div>
+
+    <!-- Carousel -->
+  <br><div id="demo" class="carousel slide col-sm-12 text-uppercase text-center" data-ride="carousel">
+    <h3>Airing Anime</h3>
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner ">
+    <div class="carousel-item active">
+      <img src="{% static 'img/1.jpg' %}" alt="Anime Girl" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/2.jpg' %}" alt="Bleach" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/3.jpg' %}" alt="Tokyo Gohul" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/4.jpg' %}" alt="Naruto" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'img/5.jpg' %}" alt="One piece" class="img-responsive" style="width:100%" alt="Image">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+  <br>
+  <br>
+</div>
+
+
+
+  <br><div class="container-fluid cont5 text-center text-uppercase" id="season">
+    <h3>New Season</h3><br>
+  <div class="row">
+    <div class="col-xl-3">
+      <img src="{% static 'img/12.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Samurai Champloo</p>
+    </div>
+    <div class="col-xl-3">
+      <img src="{% static 'img/13.png' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Berserker</p>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+       <p>Mugen is a fierce animal-like warrior with a unique Bboying (break-dance) inspired fighting style. Jin has a more traditional style but don’t think of this as a weakness because his skills are amazing. The two contrasting samurai warriors are far from friends, yet their separate paths seem to cross anyways. Mugen is wandering aimlessly through the city when he stumbles upon a teahouse where he meets Jin and Fuu. Fuu convinces them both to come with her in search of a mysterious samurai that smells like sunflowers and their journey begins. This modernized hip-hop tale breaks the barriers of the common, historical, samurai anime.  Genre: Action, adventure, comedy, drama</p>
+      </div>
+      <div class="well">
+       <p>Guts, a man who calls himself “The Black Swordsman” looks upon his days serving as a member of a group of mercenaries, the Band of the Hawk, nicknamed “the Grim Reaper of the Battlefield.” Led by an ambitious, ruthless, and intelligent man named Griffith,, a man who calls himself “The Black Swordsman” looks upon his days serving as a member of a group of mercenaries, the Band of the Hawk. Led by an ambitious, ruthless, and intelligent man named Griffith, together they battle their way into the royal court, and are forced into a fate that may change their entire lives.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid cont5 text-center text-uppercase" >
+  <div class="row">
+    <div class="col-xl-3">
+      <img src="{% static 'img/15.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>MOnster</p>
+    </div>
+    <div class="col-xl-3">
+      <img src="{% static 'img/14.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Beelzebub</p>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+       <p> Plot Summary:Kenzou Tenma, a Japanese brain surgeon in Germany, had it all: incredible skill at his work, a rich and beautiful fiancee, and a promising career at his hospital. However, after becoming disenchanted by hospital politics, he chose to save the life of a young boy who got shot in the head over the life of the mayor. As a result he lost the support of the hospital director, as well as his position in the hospital and his fiance. A short time later, the hospital director and the doctors that replaced him were murdered, and once again he was catapulted back onto the top.</p>
+      </div>
+      <div class="well">
+       <p>The story follows the “strongest juvenile delinquent”, Oga Tatsumi, a first year in “Ishiyama High” the school for delinquents. One day while sleeping next to a river he sees a man floating down it, he pulls him to shore and the man splits in half revealing a baby boy. This boy is the son of the demon king and he has been chosen as the one to raise… more The story follows the “strongest juvenile delinquent”, Oga Tatsumi, a first year in “Ishiyama High” the school for delinquents. One day while sleeping next to a river he sees a man floating down it, he pulls him to shore and the man splits in half revealing a baby boy. This boy is the son of the demon king and he has been chosen as the one to raise it with the baby’s demon maid Hilda. </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="footer-top">
+      <div class="container-fluid text-white">
+      	<h4>Search anime by list</h4>
+      	<ul id="list">
+      		<a href="#" class="nav-link">
+                <li>A</li><li>B</li><li>C</li><li>D</li><li>E</li><li>F</li><li>G</li><li>H</li><li>I</li>
+      		    <li>J</li><li>K</li><li>L</li><li>M</li><li>N</li><li>O</li><li>P</li><li>Q</li><li>R</li>
+      		    <li>S</li><li>T</li><li>U</li><li>V</li><li>W</li><li>X</li><li>Y</li><li>Z</li></a></ul>
+        <div class="row">
+          <div class="col-lg-3 col-lg-3 footer-links">
+            <h class="Upper">Links</h>
+            <ul>
+              <li><i class="link"></i><a href="#">Home</a></li>
+              <li><i class="link"></i><a href="#">Contact</a></li>
+              <li><i class="link"></i><a href="#">About Us</a></li>
+              <li><i class="link"></i><a href="#">Help</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-lg-3 footer-info">
+            <h class="Upper">Info</h>
+            <ul>
+              <li>+4475 000 000</li>
+              <li>0800 000 000</li>
+              <li>info@anime.in</li>
+              <li>Baagbazar, Kathmandu</li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-lg-3 footer-contact">
+            <h class="Upper">Follow us</h>
+            <ul>
+              <li>
+                <a href="#"><img class= "logo2" src="{% static 'img/facebook.png' %}" title="Facebook" alt="Facebook"></a>
+                <a href="#"><img class= "logo2" src="{% static 'img/instagram.png' %}" title="Instagram" alt="Instagram"></a>
+                <a href="#"><img class= "logo2" src="{% static 'img/google.png' %}" title="Google" alt="Google"></a>
+                <a href="#"><img class= "logo2" src="{% static 'img/youtube.png' %}" title="Youtube" alt="Youtube"></a>
+                <a href="#"><img class= "logo2" src="{% static 'img/twitter.png' %}" title="Twitter" alt="Twittwer"></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-lg-3 footer-contact">
+              <form  action="#" method="post" class="form-inline" target="">
+              <input class="form-control" type="Email" name="Email" placeholder="Your Email address" onblur="this.placeholder=Your email" required>
+              <button name="Submit" type="btn">Submit</button>
+              <button class ="click-btn button btn-default" id="clickbutton">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+<button onclick="topFunction()" id="btn1" title="Scroll to the top"><i class="fa fa-level-up"></i></button>
+
+<script type="text/javascript">
+
+  var time=0;
+
+		var time_start = function(){
+
+			if (keep_counting==true){
+
+				time = time + 1;
+
+				document.getElementById('time').innerHTML = time;
+
+				setTimeout(time_start,1000)
+			}
+			else
+			{
+				keep_counting = true;
+
+				document.getElementById('start').disabled = false;
+			}
+		}
+
+		var start =function()
+		{
+			document.getElementById('start').disabled = true;
+
+			time_start();
+		}
+
+		var keep_counting = true;
+
+		var time_stop = function()
+		{
+			keep_counting = false;
+		}
+
+		var reset = function()
+		{
+			time = 0;
+
+			document.getElementById('time').innerHTML = time;
+		}
+		mybtn = document.getElementById("btn1");
+
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+		  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		    mybtn.style.display = "block";
+		  } else {
+		    mybtn.style.display = "none";
+		  }
+		}
+		function topFunction() {
+		  document.body.scrollTop = 0;
+		  document.documentElement.scrollTop = 0;
+		}
+
+        //initial setup
+        document.addEventListener('DOMContentLoaded', function(){
+            let stars = document.querySelectorAll('.star');
+            stars.forEach(function(star){
+                star.addEventListener('click', setRating);
+            });
+
+            let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+            let target = stars[rating - 1];
+            target.dispatchEvent(new MouseEvent('click'));
+        });
+
+        function setRating(ev){
+            let span = ev.currentTarget;
+            let stars = document.querySelectorAll('.star');
+            let match = false;
+            let num = 0;
+            stars.forEach(function(star, index){
+                if(match){
+                    star.classList.remove('rated');
+                }else{
+                    star.classList.add('rated');
+                }
+                //are we currently looking at the span that was clicked
+                if(star === span){
+                    match = true;
+                    num = index + 1;
+                }
+            });
+            document.querySelector('.stars').setAttribute('data-rating', num);
+        }
+</script>
+</body>
+</html>

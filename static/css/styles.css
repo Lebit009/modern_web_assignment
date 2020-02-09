@@ -1,0 +1,341 @@
+*{
+	margin:0;
+	padding:0;
+}
+.body{
+	width: 100vh;
+	text-align: center;
+}
+
+.header{
+    background-image:url('../img/allimage.png' );
+	color: white;
+	position :relative;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.intro-text{
+	height: 200px;
+	margin: 13% 15%;
+	text-align: center;
+	margin: 13% 25%;
+}
+
+li a,a{
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover{
+  color: red;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+li a, a:active {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+h1{
+	font-size: 60px ;
+	font-family: "Impact";
+}
+
+h2{
+	font-family: "Brush Script MT";
+}
+
+#nav-bar{
+	position:sticky;
+	top:1;
+	z-index: 1;
+}
+
+.navbar{
+	padding: 0;
+}
+
+h3{
+	color: white;
+}
+
+.navbar-brand img{
+	height: 50px;
+	padding-right: 10px;
+}
+.navbar-nav li{
+	padding: 10px;
+	margin-right: 50px;
+	font-weight: 600;
+	color:white;
+}
+.navbar-nav li:hover{
+	color: red;
+}
+
+.navbar-toggler{
+	color:black;
+	background-color: white;
+}
+.slide{
+	background-color: black;
+}
+.name{
+	animation: nameS 1s infinite;
+}
+
+@keyframes nameS{
+	0%{color:red;}
+	25%{color:purple;}
+	50%{color:white;}
+	75%{color:blue;}
+	100%{color:purple;}
+}
+
+.header{
+	height: 100vh;
+	background-color: black;
+}
+#time
+	{
+		font-size: 50px;
+		color:white;
+	}
+
+.time{
+	background-color: black
+}
+
+
+.button{
+		border:1px solid red;
+		background:none;
+		padding: 10px 20px;
+		font-size: 20px;
+		font-family:"Arial";
+		cursor: pointer;
+		margin:10px;
+		transition:0.8s;
+		position: relative;
+		color: white;
+}
+
+.button::before{
+	content: "";
+	position: absolute;
+	left: 0;
+	width: 100%;
+	background:white;
+	z-index: 1;
+	transition: 2s;
+	  top: 0;
+  border-radius: 0 0 50% 50%;
+}
+.button::before{
+  top: 0;
+  border-radius: 0 0 50% 50%;
+}
+.button::before,{
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+.button:hover::before{
+  height: 23%;
+}
+
+.button:hover{
+		background: black;
+	}
+
+.button{
+	color: red;
+}
+.button:hover{
+	color: white;
+}
+
+
+.cont3{
+	background-image:linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)) ,url('allimage.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-color: black;
+}
+.cont1 ,.cont2, .cont4, .cont5{
+	background-color: black;
+	color:white;
+}
+.checked {
+  color: orange;
+}
+
+.section{
+	background-color: black;
+}
+
+.footer {
+      background-color: black;
+      padding: 25px;
+
+    }
+
+ .footer-top
+ {
+ 	background-color: 	black;
+ }
+ul li
+{
+	list-style-type: none;
+}
+
+.footer-contact{
+	margin-top:25px;
+}
+
+.footer-info{
+	color:white;
+}
+
+.logo2
+ {
+ 	height:30px;
+ 	padding: 0px;
+ }
+
+.logo2:hover{
+	padding :5px;
+}
+
+.link{
+	color:white;
+	font-size: 10px;
+	text-style-type:none;
+}
+.Upper{
+   color:red;
+	font-size: 20px;
+    }
+
+h4{
+	font-size: 20px ;
+	font-family: "Impact";
+	color:red;
+	text-align: center;
+}
+
+ul#list li {
+  display:inline;
+  list-style-type: none;
+  color: white;
+  padding: 19px;
+  margin-left:0.5px;
+}
+
+ul#list li:hover{
+	color:red;
+}
+.cont0{
+    background-color:black;
+}
+
+.table{
+    color:white;
+    width: 100%;
+}
+.row1{
+    padding:20px;
+}
+#t1{
+    color:red;
+}
+
+.stars{
+          color: gold;
+          font-size: 25px;
+          padding: 10px;
+        }
+        .star::before{
+          content: '\2606';    /* star outline */
+          cursor: pointer;
+        }
+        .star.rated::before{
+          /* the style for a selected star */
+          content: '\2605';  /* filled star */
+        }
+
+        .stars{
+            counter-reset: rateme 0;
+            font-size: 25px;
+        }
+        .star.rated{
+            counter-increment: rateme 1;
+        }
+        .stars::after{
+            content: counter(rateme) '/5';
+        }
+
+.bar-5 {width: 50%; height: 18px; background-color: violet;}
+.bar-4 {width: 20%; height: 18px; background-color: blue;}
+.bar-3 {width: 10%; height: 18px; background-color: white;}
+.bar-2 {width: 5%; height: 18px; background-color: purple;}
+.bar-1 {width: 15%; height: 18px; background-color: gold;}
+
+.fa {
+  font-size: 25px;
+}
+.checked {
+  color: orange;
+}
+
+/* Three column layout */
+.side {
+  float: left;
+  width: 15%;
+  margin-top:10px;
+}
+
+.middle {
+  margin-top:10px;
+  float: left;
+  width: 70%;
+}
+
+/* Place text to the right */
+.right {
+  float: left;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The bar container */
+.bar-container {
+  width: 100%;
+  background-color: grey;
+  text-align: center;
+  color: white;
+}
+#btn1{
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: transparent; /* Set a background color */
+  color: red; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+}
+
+#btn1:hover {
+  color :white;
+}

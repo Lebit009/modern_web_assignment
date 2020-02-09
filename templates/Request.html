@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>Request</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/request.css' %}">
+</head>
+
+
+<body>
+<!-- Trigger/Open The Modal -->
+<button class="button" data-toggle="modal" data-target="#myModal" id="myBtn">Click here for request.</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+ <!-- Modal content -->
+<div class="modal-content">
+  <div class="modal-header">
+
+    <span class="close" data-dismiss="modal">&times;</span>
+  </div>
+<form method="post">
+    {% csrf_token  %}
+            <label for="anime_name"  class="text-white" >Anime Name</label>
+          <input type="text" placeholder="Enter anime name"   name="animename" required><br>
+  <label for="Username"  class="text-white" >Username</label>
+          <input type="text" placeholder="Enter username" name="us" required><br>
+    <button onclick="myFunction()" class="button" type="submit"> Submit</button>
+      </form>
+
+  <div class="modal-footer">
+
+  </div>
+</div>
+
+</div>
+
+</body>
+
+<script type="java/javascript">
+	// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(none) {
+  if (none.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+</script>
+</html>

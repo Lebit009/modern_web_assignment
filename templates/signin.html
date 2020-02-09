@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}">
+  </head>
+
+  <body>
+    <form method="post">
+      {% csrf_token %}
+      <div class="container col-lg-3">
+        <h1>Sign Up</h1>
+        <p>Fill the form to create an account.</p>
+        <div class="text">
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+          <label for="first_name"><b>Firstname</b></label>
+          <input type="text" placeholder="Enter firstname" name="first_name" required>
+          <label for="last_name"><b>Lastname</b></label>
+          <input type="text" placeholder="Enter lastname" name="last_name" required>
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter username" name="username" required>
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password" required>
+
+          <label for="repeat"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="repeat" required>
+
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> <b>Remember me</b>
+          </label>
+        </div>
+        <p>By creating an account you agree to our <a href="#" style="color:darkred">Terms & Privacy</a>.</p>
+
+        <div class="button-fix">
+          <button type="button" class="btn">Cancel</button>
+          <button type="submit" class="btn">Sign Up</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>

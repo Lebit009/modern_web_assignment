@@ -1,0 +1,74 @@
+
+body{
+	font-size: 20px;
+	background-image:url('../img/allimage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: black;
+	/* The Modal (background) */
+}
+.modal {
+  position: fixed; /* Stay in place */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color:grey 0.7;   /* Black w/ opacity */
+}
+/*#req:hover{
+  background-color: red;
+}*/
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: black;
+  margin:130px 400px;
+  width:40%;
+  height: 30%;
+  box-shadow: linear-gradient(to left,red,white);
+  animation-name: animatetop;
+  animation-duration: 2s
+}
+/* Add Animation */
+@keyframes animatetop {
+  from {left: -400px; opacity: 0}
+  to {left: 0; opacity: 1}
+}
+/* Modal Header */
+.modal-header {
+  background-color:black;
+  color: white;
+  float: left;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;
+color: white;}
+
+/* Modal Footer */
+.modal-footer {
+  background-color: black;
+  color: white;
+}
+
+/* The Close Button */
+.close {
+  color: red;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  cursor: pointer;
+  float: right;
+}
+.button{
+		background: linear-gradient(to left, black,red);
+		margin: 20px;
+		color: white;
+	}
+.button:hover{
+		background: black;
+	}
+
